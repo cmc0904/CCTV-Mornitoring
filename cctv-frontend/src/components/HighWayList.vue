@@ -91,8 +91,11 @@ export default {
     },
     async fetchData() {
       try {
-
-        const response = await axios.get("http://localhost:1000/geGrouptData/2023-09-18");
+        let today = new Date();
+        let year = today.getFullYear(); // 년도
+        let month = today.getMonth() + 1;  // 월
+        let date = today.getDate();  // 날짜
+        const response = await axios.get("http://localhost:1000/geGrouptData/" + year + "-" + month + '-' + date);
 
         this.groupedData = response.data;
 
